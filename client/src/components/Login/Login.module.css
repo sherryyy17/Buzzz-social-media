@@ -1,0 +1,40 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerContainer {
+    border: none;
+    text-align:center;
+    padding: 7rem 5rem;
+    box-shadow: 0 0 15px rgba(230, 222, 222, 0.4);
+}
+
+.innerContainer img {
+    padding-bottom: 1.8rem;
+    width: 70px;
+    height: 70px;
+}
+
+.innerContainer h3 {
+    color: #696467;
+    font-weight: 500;
+}
+
+.innerContainer p {
+    padding-bottom: 3rem;
+    color: #b3adb1;
+    font-size: small;
+}
+
+button {
+    padding: 12px 28px;
+    color: #de1888 ;
+    font-weight: bold;
+    border: 1px solid #de1888;
+    border-radius: 50px;
+    background: none;
+    cursor: pointer;
+}
