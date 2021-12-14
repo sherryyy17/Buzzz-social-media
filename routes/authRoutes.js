@@ -8,7 +8,9 @@ module.exports = (app) => {
         })
     ); 
     
-    app.get('/auth/google/callback', passport.authenticate('google'));
+    app.get('/auth/google/callback', passport.authenticate('google', {
+        successRedirect: "/currUser"
+    }));
 
     app.get('/logout', (req, res) => {
         req.logout();
