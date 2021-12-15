@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    padding: 0 2rem;
+}
+
+.logo {
+    height: 55px;
+    width: 55px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+nav img {
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+nav span {
+    padding-right: 20px;
+    font-size: 13px;
+}
+
+.icons {
+    padding-right: 14px;
+}

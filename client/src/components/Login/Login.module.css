@@ -9,11 +9,11 @@
     border: none;
     text-align:center;
     padding: 7rem 5rem;
-    box-shadow: 0 0 15px rgba(230, 222, 222, 0.4);
+    box-shadow: 0 0 20px rgba(230, 222, 222, 0.4);
 }
 
 .innerContainer img {
-    padding-bottom: 1.8rem;
+    margin-bottom: 3rem;
     width: 70px;
     height: 70px;
 }
@@ -21,6 +21,7 @@
 .innerContainer h3 {
     color: #696467;
     font-weight: 500;
+    padding-bottom: 1.5rem;
 }
 
 .innerContainer p {
