@@ -22,12 +22,19 @@ passport.use(new GoogleStratergy(
         callbackURL: '/auth/google/callback'
     }, 
     (accessToken, refreshToken, profile, done) => {
+        console.log(profile);
         UserModel.findOne({ googleId: profile.id })
             .then((oldUser) => {
                 if(oldUser) {
                     done(null,oldUser)
                 } else {
-                    new UserModel({ googleId: profile.id }).save()
+                    new UserModel({ 
+                        googleId: profile.id,
+                        firstName: profile.given_name,
+                        lastName: profile.family_name,
+                        email: profile.email,
+                        profilePic: profile. picture
+                    }).save()
                     .then(user => done(null,user));
                 }
             })
