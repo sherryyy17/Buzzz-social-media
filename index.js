@@ -6,10 +6,13 @@ const authRoutes = require('./routes/authRoutes');
 const passport = require('passport');
 const { UserModel } = require('./models/User');
 require('./services/passport');
+var cors = require('cors');
 
 mongoose.connect(keys.mongoURI);
 
 const app = express();
+
+app.use(cors());
 
 app.use(
     cookieSession({

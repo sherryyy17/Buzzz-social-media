@@ -9,7 +9,7 @@ module.exports = (app) => {
     ); 
     
     app.get('/auth/google/callback', passport.authenticate('google', {
-        successRedirect: "/currUser"
+        successRedirect: "/api/currUser"
     }));
 
     app.get('/logout', (req, res) => {
@@ -17,7 +17,7 @@ module.exports = (app) => {
         res.send("Successfully logged out!");
     })
 
-    app.get('/currUser', (req, res) => {
+    app.get('/api/currUser', (req, res) => {
         res.send(req.user);
     })
 };
