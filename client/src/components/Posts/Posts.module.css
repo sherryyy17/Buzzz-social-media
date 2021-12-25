@@ -1,0 +1,90 @@
+.postContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 2rem 2rem 2rem;
+    border-radius: 5px;
+    box-shadow: 0 0 50px rgba(230, 222, 222, 0.4);
+    padding: 1rem;
+}
+
+.postHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.postedBy {
+    display: flex;
+    font-size: 0.8rem;
+    color: #a3a098;
+}
+
+h4 {
+    color: #545350;
+    font-size: 1rem;
+    padding: 2px 0;
+}
+
+.postedBy img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.caption {
+    color : #545350;
+    font-size: 0.9rem;
+    padding-bottom: 10px;
+}
+
+.postImg img {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.counts {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    box-shadow: 0 1px rgba(199, 183, 183, 0.4);
+}
+
+.thumbsdown {
+    color: #bf4926;
+}
+
+.thumbsup {
+    color: #2691bf;
+}
+.NoOflikes {
+    padding-left: 5px;
+    padding-right: 20px;
+}
+
+.NoOfDislikes {
+    padding-left: 5px;
+}
+
+.actions {
+    display: flex;
+    padding: 12px 0;
+    justify-content: space-around;
+}
+
+.hitActions {
+    margin-right: 7px;
+    font-size: 1.15rem;
+    color: #383836;
+    cursor: pointer;
+}
+
+.clicked {
+    margin-right: 7px;
+    font-size: 1.15rem;
+    color: #2691bf;
+    cursor: pointer;
+}
