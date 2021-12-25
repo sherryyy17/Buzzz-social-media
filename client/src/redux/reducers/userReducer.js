@@ -1,4 +1,4 @@
-import { FETCH_SUGGESTED, UPDATE_USER, FETCH_BY_ID } from "../actions/type";
+import { FETCH_SUGGESTED, UPDATE_USER } from "../actions/type";
 
 export default function(state = [], action){
     switch(action.type) {
