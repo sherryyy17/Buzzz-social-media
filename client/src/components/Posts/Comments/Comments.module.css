@@ -1,0 +1,16 @@
+.commentContainer {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+    padding: 4px 10px;
+    background-color: rgb(240, 237, 241);
+    width: 100%;
+    border-radius: 5px;
+}
+
+.commentContainer img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
