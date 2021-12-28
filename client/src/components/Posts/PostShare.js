@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const PostShare = (props) => {
     const [loading, setLoading ] = useState(false);
-    const [ imgSelected, setImgSelected ] = useState(null);
+    const [ imgSelected, setImgSelected ] = useState([]);
     const textPost = useRef("");
 
     let profilePic = '';
@@ -28,7 +28,7 @@ const PostShare = (props) => {
             formData
             );
         console.log(res.data.secure_url);
-        setImgSelected(res.data.secure_url);
+        setImgSelected(imgSelected => [...imgSelected, res.data.secure_url]);
         setLoading(false);
     }
 
@@ -62,7 +62,7 @@ const PostShare = (props) => {
             <input id="file-input" type="file" onChange={ handleFileAdd } />
             <p>Photo/Video</p>
         </div>
-        { !loading && <button type='submit' onClick={ savePost } >Submit</button> }        
+        { !loading && <button type='submit' onClick={ savePost } >Post</button> }        
     </div>
 }
 
