@@ -10,3 +10,7 @@ module.exports.getAllPosts = async (req, res) => {
     res.send(postList);
 }
 
+module.exports.updatePost = async (req, res) => {
+    const updatedPost = await postService.update(req.params, req.body);
+    res.send(updatedPost);
+}
