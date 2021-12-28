@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PostShare from './PostShare';
 import Posts from './Posts';
 import { connect } from "react-redux";
@@ -15,7 +15,8 @@ const PostList = (props) => {
         <p style = {{ paddingLeft: '2rem', paddingTop: '0.7rem', color:'#545350', fontSize: '0.9rem' }} >Sort by: <b>Recent</b></p>
         {postList &&
             postList.map(
-                post => <Posts 
+                (post,index) => <Posts 
+                            key = { index }
                             post = { post } 
                         /> 
             )
