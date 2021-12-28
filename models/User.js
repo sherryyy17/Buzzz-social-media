@@ -14,15 +14,31 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    email: String,
+    coverImg: {
+        type: String,
+        default: ""
+    },
     profilePic: {
         type: String
     },
     address : {
-        country: String,
-        city: String
+        country: {
+            type: String,
+            default: ""
+        },
+        city: {
+            type: String,
+            default: ""
+        }
     },
-    description : String,
+    website: {
+        type: String,
+        default: ""
+    },
+    description : {
+        type: String,
+        default: ""
+    },
     friendsIds : [String]
 });
 
