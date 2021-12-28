@@ -12,16 +12,19 @@ const PostSchema = new Schema({
         required: true
     },
     postReacts: {
-        likes: {
-            type: Number,
-            default: 0
+        likedBy: {
+            type: [String]
         },
-        dislikes: {
-            type: Number,
-            default: 0
+        dislikedBy: {
+            type: [String]
         }
     },
-    comments: []
+    comments: [
+        {
+            commentedBy: String,
+            message: String
+        }
+    ]
 },{
     timestamps: true
 });
