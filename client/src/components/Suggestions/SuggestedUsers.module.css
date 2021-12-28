@@ -1,0 +1,43 @@
+.suggHead {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.suggHead .icon{
+    color: #85837f;
+}
+
+.suggList {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    color: #85837f;
+}
+
+.username {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1rem;
+    color: #4c4b47;
+}
+
+.username img {
+    height: 30px;
+    width: 32px;
+    border-radius: 50%;
+}
+
+.username p {
+    padding-left: 0.5rem;
+}
+
+.suggList button {
+    border: none;
+    color: #2691bf;
+    padding: 0;
+    margin-bottom: 1rem;
+}

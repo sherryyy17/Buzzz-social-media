@@ -18,7 +18,7 @@ const Suggestions = (props) => {
 
     console.log("--",sugUsers);
     
-    return <>
+    return <div style={ { width: '25vw', padding:'1rem', margin:'1rem',  boxShadow: '0 0 20px rgba(230, 222, 222, 0.4)' } }>
         <SuggestionHeader />
         { sugUsers.map( 
             item => <SuggestedUsers 
@@ -27,7 +27,7 @@ const Suggestions = (props) => {
                         friendList = { props.auth.friendsIds } 
                     /> 
         ) }
-    </>
+    </div>
 }
 
 function mapStateToProps( { auth, user } ) {

@@ -1,18 +1,18 @@
 import React from "react";
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
+import classes from './SuggestedUsers.module.css';
 
 const SuggestedUsers = (props) => {
     const addFriend = () => {
-        console.log("//",props.friendList);
-        console.log("//",props.user.googleId);
         props.UpdateCurrUser( props.currId, { friendsIds: [ ...props.friendList, props.user.googleId ] } );
-        console.log("added friend");
     }
 
-    return <div>
-            <img alt = "user dp" />
-            <p>{ props.user.firstName } { props.user.lastName } </p>
+    return <div className={ classes.suggList }>
+            <div className={ classes.username }>
+                <img src={ props.user.profilePic } alt = "user dp" />
+                <p>{ props.user.firstName } { props.user.lastName } </p>
+            </div>
             <button onClick={ addFriend }>+Friend</button>
         </div>
 }

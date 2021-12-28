@@ -6,14 +6,14 @@ import FriendList from './FriendList';
 const Friends = (props) => {
     const { auth } = props;
 
-    return<>
+    return <div style= {{ width: '25vw', padding:'1rem', margin:'1rem',  boxShadow: '0 0 20px rgba(230, 222, 222, 0.4)' }} >
         <FriendsHeader />
         { (auth != null || auth) &&
             auth.friendsIds.map(
                 id => <FriendList id = { id } /> 
             )
         }
-    </>
+    </div>
 }
 
 function mapStateToProps({ auth }) {
