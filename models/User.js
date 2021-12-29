@@ -39,7 +39,13 @@ const UserSchema = new Schema({
         type: String,
         default: ""
     },
-    friendsIds : [String]
+    friendsIds : [String],
+    friendReqIds : [String],
+    isAdmin : {
+        type: Boolean,
+        required: true,
+        default: false
+    } 
 });
 
 const UserModel = mongoose.model('users', UserSchema);

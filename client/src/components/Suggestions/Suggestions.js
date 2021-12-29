@@ -13,7 +13,7 @@ const Suggestions = (props) => {
     }
 
     const sugUsers = props.user.filter(item => {
-        return item.googleId !== currUserId && !friends.includes(item.googleId) 
+        return item.googleId !== currUserId && !friends.includes(item.googleId);
     });
 
     console.log("--",sugUsers);

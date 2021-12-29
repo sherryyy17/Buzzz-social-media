@@ -15,7 +15,7 @@
 }
 
 .textContainer {
-    width: 70%;
+    width: 80%;
 }
 .textPost {
     width: 100%;
@@ -46,4 +46,12 @@
 
 .imageUpload input {
     display: none;
+}
+
+.postContainer button {
+    margin:  0 1rem;
+    border: none;
+    color: #383836;
+    font-size: 0.9rem;
+    background-color: #edf1f7;
 }

@@ -7,6 +7,9 @@ import * as actions from './redux/actions';
 import Suggestions from "./components/Suggestions/Suggestions";
 import Friends from "./components/Friends/Friends";
 import PostList from "./components/Posts/PostList";
+import FriendsProfile from "./components/Profile/FriendsProfile";
+import EditProfile from "./components/Profile/EditProfile/EditProfile";
+import Requests from "./components/Friends/Requests/Requests";
 
 function App(props) {
 
@@ -20,10 +23,13 @@ function App(props) {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={ <Login /> } exact />
-        <Route path='/profile' element= { <Profile /> } />
+        <Route path='/profile' element= { <Profile /> } exact />
         <Route path='/suggestion' element= { <Suggestions /> } />
         <Route path='/friends' element= { <Friends /> } />
+        <Route path='/profile/:id' element = { <FriendsProfile /> } />
         <Route path='/post' element = { <PostList /> } />
+        <Route path='/edit' element = { <EditProfile/> } />
+        <Route path='/requests' element = { <Requests /> } />
       </Routes>
     </BrowserRouter>
   );
