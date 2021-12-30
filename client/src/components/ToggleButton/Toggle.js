@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import classes from './Toggle.module.css';
 
-const Toggle = () => {
+const Toggle = (props) => {
     const [ isActive, setIsActive ] = useState(false);
 
     const toggleMode = () => {
+        if(!isActive) {
+            props.adminCallback(true);
+        } else {
+            props.adminCallback(false);
+        }
         setIsActive(!isActive);
     }
 

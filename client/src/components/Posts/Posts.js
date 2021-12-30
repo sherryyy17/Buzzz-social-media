@@ -1,7 +1,7 @@
 import { faCommentDots, faEllipsisH, faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
 import Comments from "./Comments/Comments";
 import classes from './Posts.module.css';
@@ -14,8 +14,7 @@ const Posts = (props) => {
     const [ style, setStyle] = useState({display: 'none'});
     const [ isClicked, setIsClicked ] = useState(false);
     const delPermission = props.delPermission;
-    const selector = useSelector((state) => state.post);
-    console.log(selector);
+
     const { posted, auth } = props;
 
     const date = posted.createdAt;
