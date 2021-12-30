@@ -30,7 +30,6 @@ function App(props) {
         <Route path='/suggestion' element= { <Suggestions /> } />
         <Route path='/friends' element= { <Friends /> } />
         <Route path='/profile/:id' element = { <FriendsProfile /> } />
-        <Route path='/post' element = { <PostList /> } />
         <Route path='/edit' element = { <EditProfile/> } />
         <Route path='/requests' element = { <Requests /> } />
         <Route path='/reported' element = { <ReportedList /> } />

@@ -1,10 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { connect } from "react-redux";
 import Header from '../Header/Header';
 import PostList from '../Posts/PostList';
 import Suggestions from '../Suggestions/Suggestions';
 import Friends from '../Friends/Friends';
 
-const Feed = () => {
+const Feed = (props) => {
+    let navigate = useNavigate();
+
+    if( !props.auth ) {
+        navigate('/')
+    }
     return <div>
             <Header />
             <div style={{ display:'flex', backgroundColor: '#e6e2e1' }}>
@@ -19,4 +26,8 @@ const Feed = () => {
         </div>
 }
 
-export default Feed;
+function mapStateToProps( { auth } ) {
+    return { auth };    
+}
+
+export default connect( mapStateToProps )( Feed );

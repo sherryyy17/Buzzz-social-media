@@ -1,12 +1,23 @@
 import React from 'react';
 import Posts from '../Posts';
 import { connect } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 const ReportedList = (props) => {
-    const { post } = props;
+    let navigate = useNavigate();
+
+    const { post, auth } = props;
     let postList = '';
     if( post != null && post ) {
         postList = post;
+    }
+    if( !auth ) {
+        navigate('/login')
+    }
+    if( auth != null || auth ) {
+        if(!auth.isAdmin) {
+            navigate('/feed')
+        }
     }
     const reportedList = postList.filter(post => post.isReported === true);
 
@@ -24,8 +35,8 @@ const ReportedList = (props) => {
     </>
 }
 
-function mapStateToProps( { post } ) {
-    return { post };    
+function mapStateToProps( { post, auth } ) {
+    return { post, auth };    
 }
 
 export default connect( mapStateToProps )( ReportedList );

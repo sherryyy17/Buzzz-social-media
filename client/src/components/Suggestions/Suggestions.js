@@ -1,11 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import SuggestionHeader from "./SuggestionHeader";
 import SuggestedUsers from "./SuggestedUsers";
 
 const Suggestions = (props) => {
-    let currUserId = "", friends = [];
+    let navigate = useNavigate();
 
+    let currUserId = "", friends = [];
+    if( !props.auth ) {
+        navigate('/')
+    }
     if(props.auth != null || props.auth){
         currUserId = props.auth.googleId;
         friends = props.auth.friendsIds;
