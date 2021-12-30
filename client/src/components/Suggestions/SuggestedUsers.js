@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
 import classes from './SuggestedUsers.module.css';
@@ -7,15 +7,19 @@ import axios from "axios";
 
 const SuggestedUsers = (props) => {
     let navigate = useNavigate();
+    const [ reqSent, setReqSent ] = useState(false);
+
+    useEffect(() => {
+        if(props.user.friendReqIds.includes(props.currId)) {
+            setReqSent(true);
+        }
+    },[])
 
     const addFriend = () => {
-        // props.UpdateCurrUser( props.currId, { friendsIds: [ ...props.friendList, props.user.googleId ] } );
-        // props.UpdateUser(props.user.googleId, { 
-        //     friendReqIds: [ ...props.user.friendReqIds, props.currId ]
-        // });
-        const res = axios.patch(props.user.googleId, {
+        const res = axios.patch(`/api/users/${props.user.googleId}`, {
             friendReqIds: [ ...props.user.friendReqIds, props.currId ]
         });
+        setReqSent(true);
         console.log("/*",res.data);
     }
 
@@ -28,7 +32,8 @@ const SuggestedUsers = (props) => {
                 <img src={ props.user.profilePic } alt = "user dp" onClick = { visitProfile } />
                 <p onClick = { visitProfile }>{ props.user.firstName } { props.user.lastName } </p>
             </div>
-            <button onClick={ addFriend }>+Friend</button>
+            {!reqSent && <button onClick={ addFriend }>+Friend</button> }
+            {reqSent && <button>Pending</button> }
         </div>
 }
 
