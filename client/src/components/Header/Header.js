@@ -18,14 +18,22 @@ const Header = (props) => {
         navigate("/requests");
     }
 
+    const visitFeed = () => {
+        navigate('/feed');
+    }
+
+    const visitProfile = () => {
+        navigate(`/profile`);
+    }
+
     return <div className={classes.container}>
         <div>
-            <img src={ logo } alt="ttn-logo" className={classes.logo} />
+            <img src={ logo } alt="ttn-logo" className={classes.logo} onClick={ visitFeed }/>
         </div>
         <nav>
-            <img src={ profilePic } alt="profile-pic" />
-            <span>{ firstName } { lastName }</span>
-            <FontAwesomeIcon icon={faCommentDots} />
+            <img src={ profilePic } alt="profile-pic" onClick={ visitProfile }/>
+            <span onClick={ visitProfile }>{ firstName } { lastName }</span>
+            <FontAwesomeIcon icon={faCommentDots} className={classes.icons} />
             <FontAwesomeIcon 
                 icon={ faUserFriends } 
                 onClick = { showRequests }

@@ -24,7 +24,11 @@ const PostSchema = new Schema({
             commentedBy: String,
             message: String
         }
-    ]
+    ],
+    isReported: {
+        type: Boolean,
+        default: false
+    }
 },{
     timestamps: true
 });

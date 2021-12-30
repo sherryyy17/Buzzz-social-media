@@ -10,6 +10,8 @@ import PostList from "./components/Posts/PostList";
 import FriendsProfile from "./components/Profile/FriendsProfile";
 import EditProfile from "./components/Profile/EditProfile/EditProfile";
 import Requests from "./components/Friends/Requests/Requests";
+import ReportedList from "./components/Posts/ReportedPosts/ReportedList";
+import Feed from "./components/Feed/Feed";
 
 function App(props) {
 
@@ -22,6 +24,7 @@ function App(props) {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path='/feed' element={ <Feed /> } />
         <Route path='/' element={ <Login /> } exact />
         <Route path='/profile' element= { <Profile /> } exact />
         <Route path='/suggestion' element= { <Suggestions /> } />
@@ -30,6 +33,7 @@ function App(props) {
         <Route path='/post' element = { <PostList /> } />
         <Route path='/edit' element = { <EditProfile/> } />
         <Route path='/requests' element = { <Requests /> } />
+        <Route path='/reported' element = { <ReportedList /> } />
       </Routes>
     </BrowserRouter>
   );

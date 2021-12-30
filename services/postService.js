@@ -23,3 +23,8 @@ module.exports.update = async ({ id }, postData) => {
     const updPost = await PostModel.findOneAndUpdate({_id: id}, postData, { new: true});
     return updPost;
 }
+
+module.exports.delete = async ({ id }) => {
+    const delPost = await PostModel.deleteOne({ _id: id });
+    return delPost;
+}

@@ -1,0 +1,45 @@
+.toggleCont {
+    display: flex;
+    align-items: center;
+}
+
+.toggleCont span {
+    font-size: 0.9rem;
+    color: #545350;
+    padding-left: 5px;
+}
+
+.toggleBtn {
+    width: 50px;
+    height: 22px;
+    background: gray;
+    border-radius: 30px;
+    padding: 2px;
+    transition: all 300ms ease-in-out;
+}
+
+.toggleBtn > .circle {
+    width: 17px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 300ms ease-in-out;
+}
+
+.active {
+    width: 50px;
+    height: 22px;
+    border-radius: 30px;
+    padding: 2px;
+    background: #03adfc;
+    transition: all 300ms ease-in-out;
+}
+
+.active > .circle {
+    width: 17px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    margin-left: 30px;
+    transition: all 300ms ease-in-out;
+}

@@ -6,3 +6,4 @@ export const FETCH_BY_ID = 'fetch_by_id';
 export const SAVE_POST = 'save_post';
 export const FETCH_POST = 'fetch_post';
 export const UPDATE_POST = 'update_post';
+export const DELETE_POST = 'delete_post';

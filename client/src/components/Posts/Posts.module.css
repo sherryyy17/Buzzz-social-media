@@ -3,8 +3,9 @@
     flex-direction: column;
     margin: 1rem 2rem 2rem 2rem;
     border-radius: 5px;
-    box-shadow: 0 0 50px rgba(230, 222, 222, 0.4);
+    box-shadow: 0 0 50px rgba(250, 245, 245, 0.795);
     padding: 1rem;
+    background-color: white;
 }
 
 .postHeader {
@@ -44,6 +45,25 @@ h4 {
     height: 40vh;
     object-fit: cover;
     border-radius: 5px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.options ul {
+    list-style-type:none;
+    border: 1px solid rgb(161, 158, 158);
+    position: absolute;
+    transform: translateX(-7rem);
+} 
+
+li {
+    text-decoration: none;
+    padding: 10px;
+    border-bottom: 1px solid rgb(161, 158, 158);
+    cursor: pointer;
 }
 
 .counts {

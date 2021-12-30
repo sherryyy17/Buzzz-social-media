@@ -1,17 +1,21 @@
 .postContainer {
     display: flex;
-    padding: 1rem;
-    border: 1px solid black;
+    padding: 5px 1rem;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     border-radius: 5px;
     justify-content: space-between;
     align-items: center;
+    background-color: white;
 }
 
 .postContainer img {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
     margin-right: 8px;
+    cursor: pointer;
 }
 
 .textContainer {

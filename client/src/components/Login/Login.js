@@ -1,8 +1,13 @@
 import React from "react";
 import classes from './Login.module.css';
 import logo from '../../assets/logo.png';
+import { connect } from "react-redux";
+import { Navigate } from 'react-router-dom'
 
-const Login = () => {
+const Login = (props) => {
+    if( props.auth) {
+        return <Navigate replace to="/feed" />
+    }
 
     const loginHandler = () => {
         window.open('http://localhost:5000/auth/google',"_self");
@@ -20,4 +25,8 @@ const Login = () => {
     )
 }
 
-export default Login;
+function mapStateToProps( { auth } ) {
+    return { auth };    
+}
+
+export default connect(mapStateToProps)(Login);

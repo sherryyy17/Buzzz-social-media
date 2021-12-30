@@ -14,3 +14,8 @@ module.exports.updatePost = async (req, res) => {
     const updatedPost = await postService.update(req.params, req.body);
     res.send(updatedPost);
 }
+
+module.exports.deletePost = async (req,res) => {
+    const deletedPost = await postService.delete(req.params);
+    res.send(deletedPost);
+};

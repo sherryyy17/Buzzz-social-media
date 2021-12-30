@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_SUGGESTED, UPDATE_USER, UPDATE_CURR_USER, SAVE_POST, FETCH_POST, UPDATE_POST } from './type';
+import { FETCH_USER, FETCH_SUGGESTED, UPDATE_USER, UPDATE_CURR_USER, SAVE_POST, FETCH_POST, UPDATE_POST, DELETE_POST } from './type';
 
 export const fetchUser = () =>
     async (dispatch) => {
@@ -42,4 +42,10 @@ export const updatePost = (id, data) =>
         const Updatedpost = await axios.patch(`/api/posts/${ id }`,data);
         console.log("***",Updatedpost.data);
         dispatch({ type: UPDATE_POST, payload: Updatedpost.data });
+};
+
+export const deletePost = (id) => 
+    async (dispatch) => {
+        const deletedPost = await axios.delete(`/api/posts/${ id }`);
+        dispatch({ type: DELETE_POST, payload: deletedPost.data });
 };

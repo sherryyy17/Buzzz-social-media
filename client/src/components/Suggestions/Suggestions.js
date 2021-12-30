@@ -18,7 +18,7 @@ const Suggestions = (props) => {
 
     console.log("--",sugUsers);
     
-    return <div style={ { width: '25vw', padding:'1rem', margin:'1rem',  boxShadow: '0 0 20px rgba(230, 222, 222, 0.4)' } }>
+    return <div style={ { padding:'1rem', margin:'1rem',  boxShadow: '0 0 20px rgba(230, 222, 222, 0.4)', backgroundColor: 'white' } }>
         <SuggestionHeader />
         { sugUsers.map( 
             item => <SuggestedUsers 

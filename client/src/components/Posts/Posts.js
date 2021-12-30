@@ -1,23 +1,27 @@
 import { faCommentDots, faEllipsisH, faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import * as actions from '../../redux/actions';
 import Comments from "./Comments/Comments";
 import classes from './Posts.module.css';
 
 const Posts = (props) => {
-    const [ isLiked, setIsLiked ] = useState(props.post.postReacts.likedBy.includes(props.auth.googleId));
-    const [ isDisliked, setIsDisLiked ] = useState(props.post.postReacts.dislikedBy.includes(props.auth.googleId));
+    const [ isLiked, setIsLiked ] = useState(props.posted.postReacts?.likedBy.includes(props.auth.googleId));
+    const [ isDisliked, setIsDisLiked ] = useState(props.posted.postReacts?.dislikedBy.includes(props.auth.googleId));
     const [ msg, setMsg ] = useState(null);
     const [ showCmts, setShowCmts ] = useState(false);
+    const [ style, setStyle] = useState({display: 'none'});
+    const [ isClicked, setIsClicked ] = useState(false);
+    const delPermission = props.delPermission;
+    const selector = useSelector((state) => state.post);
+    console.log(selector);
+    const { posted, auth } = props;
 
-    const { post, auth } = props;
-
-    const date = post.createdAt;
+    const date = posted.createdAt;
     let commLen = 0, profilePic = '';
-    if(post.comments) {
-        commLen = post.comments.length;
+    if(posted.comments) {
+        commLen = posted.comments.length;
     }
 
     if(auth != null || auth) {
@@ -25,40 +29,40 @@ const Posts = (props) => {
     }
 
     const removeLike = () => {
-        post.postReacts.likedBy.map((item, index) => {
+        posted.postReacts?.likedBy.map((item, index) => {
             if(item == auth.googleId){
-                post.postReacts.likedBy.splice(index, 1);
+                posted.postReacts?.likedBy.splice(index, 1);
             }
         });
-        props.updatePost(post._id, { postReacts: {
-            ...post.postReacts,
-            ...post.postReacts.likedBy
+        props.updatePost(posted._id, { postReacts: {
+            ...posted.postReacts,
+            ...posted.postReacts?.likedBy
         }});
         setIsLiked(false);
     }
 
     const removeDislike = () => {
-        post.postReacts.dislikedBy.map((item, index) => {
+        posted.postReacts?.dislikedBy.map((item, index) => {
             if(item == auth.googleId){
-                post.postReacts.dislikedBy.splice(index, 1);
+                posted.postReacts?.dislikedBy.splice(index, 1);
             }
         });
-        props.updatePost(post._id, { postReacts: {
-            ...post.postReacts,
-            ...post.postReacts.dislikedBy
+        props.updatePost(posted._id, { postReacts: {
+            ...posted.postReacts,
+            ...posted.postReacts?.dislikedBy
         }});
         setIsDisLiked(false);
     }
 
     const handleLikes = () => {
         if(!isLiked) {
-            if(props.post.postReacts.dislikedBy.includes(props.auth.googleId)) {
+            if(props.posted.postReacts?.dislikedBy.includes(props.auth.googleId)) {
                 removeDislike();
             }
-            post.postReacts.likedBy.push(auth.googleId);
-            props.updatePost(post._id, { postReacts: {
-                ...post.postReacts,
-                ...post.postReacts.likedBy
+            posted.postReacts?.likedBy.push(auth.googleId);
+            props.updatePost(posted._id, { postReacts: {
+                ...posted.postReacts,
+                ...posted.postReacts?.likedBy
             }});
             setIsLiked(!isLiked);
         } else {
@@ -68,13 +72,13 @@ const Posts = (props) => {
 
     const handleDisLikes = () => {
         if(!isDisliked) {
-            if(props.post.postReacts.likedBy.includes(props.auth.googleId)) {
+            if(props.posted.postReacts?.likedBy.includes(props.auth.googleId)) {
                 removeLike();
             }
-            post.postReacts.dislikedBy.push(auth.googleId);
-            props.updatePost(post._id, { postReacts: {
-                ...post.postReacts,
-                ...post.postReacts.dislikedBy
+            posted.postReacts?.dislikedBy.push(auth.googleId);
+            props.updatePost(posted._id, { postReacts: {
+                ...posted.postReacts,
+                ...posted.postReacts?.dislikedBy
             }});
             setIsDisLiked(!isDisliked);
         } else {
@@ -90,14 +94,14 @@ const Posts = (props) => {
         e.preventDefault();
         if( msg !== null ) {
             
-            post.comments.push({
+            posted.comments.push({
                 commentedBy: auth.googleId, 
                 message: msg
             });
 
-            props.updatePost( post._id, { 
+            props.updatePost( posted._id, { 
                 comments: [
-                    ...post.comments
+                    ...posted.comments
                 ]
             });
             setMsg("");
@@ -108,38 +112,79 @@ const Posts = (props) => {
         setShowCmts(!showCmts);
     }
 
+    const showOpts = () => {
+        if(!isClicked) {
+            //show divs
+            setStyle({ display: 'block' });
+            setIsClicked(true);
+        } else {
+            //hide div
+            setStyle({ display: 'none' });
+            setIsClicked(false);
+        }
+    }
+
+    const reportPost = () => {
+        props.updatePost(posted._id, { 
+            isReported: true
+        });
+        alert("Post Reported!")
+    }
+
+    const deletePost = () => {
+        props.deletePost(posted._id);
+    }
+
+    const keepPost = () => {
+        props.updatePost(posted._id, { 
+            isReported: false
+        });
+    }
+
     return <div className = { classes.postContainer } >
         <div className = { classes.postHeader } >
             <div className = { classes.postedBy } >
-                <img src={ post.postedBy.profilePic } alt='post by profile pic' />
+                <img src={ posted.postedBy?.profilePic } alt='post by profile pic' />
                 <div className = { classes.name } >
-                    <h4>{ post.postedBy.firstName } { post.postedBy.lastName }</h4>
+                    <h4>{ posted.postedBy?.firstName } { posted.postedBy?.lastName }</h4>
                     <p>{ date }</p>
                 </div>
             </div>
-            <FontAwesomeIcon icon = { faEllipsisH } />
+            <div className = { classes.options }>
+                <FontAwesomeIcon 
+                    icon = { faEllipsisH } 
+                    className={classes.menu}
+                    onClick = { showOpts }
+                />
+                <ul style={ style }>
+                    {delPermission == 'false' && <li onClick={ reportPost }>Report Post</li> }
+                    {delPermission == 'false' && <li>Block user</li> }
+                    {delPermission == 'true' && <li onClick={ deletePost }>Delete Post</li> }
+                    {delPermission == 'true' && <li onClick={ keepPost }>Keep Post</li> }
+                </ul>
+            </div>
         </div>
         <div className={ classes.caption }>
-            <p>{ post.caption }</p>
+            <p>{ posted.caption }</p>
         </div>
-        { post.images 
+        { posted.images 
             && 
             <div className={ classes.postImg }>
                 {/* <img src = { post.images[0] } alt = 'posted pics' /> */}
                 {
-                    post.images.map(item => <img src = { item } alt = 'posted pics' />)
+                    posted.images.map(item => <img src = { item } alt = 'posted pics' />)
                 }
             </div> 
         }
         <div className={ classes.counts }>
             <div>
                 <FontAwesomeIcon icon={ faThumbsUp } className={ classes.thumbsup }/>
-                <span className={ classes.NoOflikes }>{ post.postReacts.likedBy.length }</span>
+                <span className={ classes.NoOflikes }>{ posted.postReacts?.likedBy.length }</span>
                 <FontAwesomeIcon icon={ faThumbsDown } className={ classes.thumbsdown } />
-                <span className={ classes.NoOfDislikes }>{ post.postReacts.dislikedBy.length }</span>
+                <span className={ classes.NoOfDislikes }>{ posted.postReacts?.dislikedBy.length }</span>
             </div>
             <div>
-                <span onClick={ showComments } className={ classes.show }>{ post.comments.length } comment(s)</span>
+                <span onClick={ showComments } className={ classes.show }>{ posted.comments?.length } comment(s)</span>
             </div>    
         </div>
         <div className = { classes.actions }>
@@ -169,13 +214,13 @@ const Posts = (props) => {
                 <button type = "submit" onClick = { addComment }>Post</button>
         </div>
         { showCmts && 
-            post.comments.map(cmt => <Comments comment = { cmt } />)
+            posted.comments.map(cmt => <Comments comment = { cmt } />)
         }
     </div>
 };
 
-function mapStateToProps( { auth } ) {
-    return { auth };    
+function mapStateToProps( { auth, post } ) {
+    return { auth, post };    
 }
 
 export default connect(mapStateToProps,actions)(Posts);

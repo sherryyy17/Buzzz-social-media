@@ -6,6 +6,8 @@ export default function(state = [], action){
             return action.payload || false;
         case UPDATE_USER: {
             const users = state.filter(user => user.googleId !== action.payload.googleId );
+            console.log(users);
+            console.log(action.payload);
             return [
                 ...users,
                 action.payload

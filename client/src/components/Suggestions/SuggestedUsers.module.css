@@ -29,10 +29,12 @@
     height: 30px;
     width: 32px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .username p {
     padding-left: 0.5rem;
+    cursor: pointer;
 }
 
 .suggList button {

@@ -9,7 +9,7 @@ module.exports = (app) => {
     ); 
     
     app.get('/auth/google/callback', passport.authenticate('google', {
-        successRedirect: "/api/currUser"
+        successRedirect: "http://localhost:3000/feed"
     }));
 
     app.get('/logout', (req, res) => {

@@ -1,13 +1,15 @@
 .container {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid rgb(245, 239, 239);
     padding: 0 2rem;
+    height: 47px;
 }
 
 .logo {
-    height: 55px;
-    width: 55px;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
 }
 
 nav {
@@ -21,13 +23,15 @@ nav img {
     width: 30px;
     border-radius: 50%;
     margin-right: 8px;
+    cursor: pointer;
 }
 
 nav span {
     padding-right: 20px;
     font-size: 13px;
+    cursor: pointer;
 }
 
 .icons {
-    padding-right: 14px;
+    margin-right: 10px;
 }

@@ -5,11 +5,13 @@ import { faImages } from '@fortawesome/free-solid-svg-icons';
 import classes from './PostShare.module.css';
 import * as actions from '../../redux/actions';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const PostShare = (props) => {
     const [loading, setLoading ] = useState(false);
     const [ imgSelected, setImgSelected ] = useState([]);
     const textPost = useRef("");
+    let navigate = useNavigate();
 
     let profilePic = '';
 
@@ -43,9 +45,11 @@ const PostShare = (props) => {
         });
     }
 
+
+    
     return <div className={ classes.postContainer } >
         <div>
-            <img src = { profilePic } alt="profile-pic"/>
+            <img src = { profilePic } alt="profile-pic" onClick = { () => navigate('/profile') } />
         </div>
         <div className={ classes.textContainer }>
             <input 
