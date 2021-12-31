@@ -5,9 +5,10 @@ import * as actions from '../../../redux/actions';
 import { connect } from 'react-redux';
 
 const RequestList = (props) => {
-    const [firstName, setFirstName] = useState(null);
-    const [lastName, setLastName] = useState(null);
-    const [profilePic, setProfilePic] = useState(null);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [profilePic, setProfilePic] = useState("");
+    const [ friendIds, setFriendIds ] = useState([]);
 
     const { id } = props;
     useEffect(async () => {
@@ -15,6 +16,7 @@ const RequestList = (props) => {
            setFirstName(user.data.firstName);
            setLastName(user.data.lastName);
            setProfilePic(user.data.profilePic);
+           setFriendIds(user.friendsIds);
     }, []);
 
     const acceptReq = () => {
@@ -23,7 +25,16 @@ const RequestList = (props) => {
                 friendReqIds: [...requestIds],
                 friendsIds: [ ...props.frndIds, id ]
              });
-             alert(firstName,"added as a Friend!");
+             if(friendIds != null) {
+                props.UpdateUser(id, {
+                    friendsIds: [friendIds, props.currId] 
+                });
+             } else {
+                props.UpdateUser(id, {
+                    friendsIds: [props.currId] 
+                });
+             }
+             
     }
 
     const rejectReq = () => {

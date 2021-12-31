@@ -12,7 +12,7 @@ module.exports = (app) => {
         successRedirect: "http://localhost:3000/feed"
     }));
 
-    app.get('/logout', (req, res) => {
+    app.get('/api/logout', (req, res) => {
         req.logout();
         res.send("Successfully logged out!");
     })

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import classes from './Header.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentDots, faUserFriends } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios';
 
 const Header = (props) => {
     let navigate = useNavigate();
@@ -26,6 +27,12 @@ const Header = (props) => {
         navigate(`/profile`);
     }
 
+    const logoutHandler = async () => {
+        const res = await axios.get('/api/logout');
+        console.log(res.data);
+        window.location.reload(true);
+    }
+
     return <div className={classes.container}>
         <div>
             <img src={ logo } alt="ttn-logo" className={classes.logo} onClick={ visitFeed }/>
@@ -38,6 +45,7 @@ const Header = (props) => {
                 icon={ faUserFriends } 
                 onClick = { showRequests }
             />
+            <button onClick={ logoutHandler }>Logout</button>
         </nav>
     </div>
 }
