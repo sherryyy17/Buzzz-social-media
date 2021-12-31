@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import logo from '../../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
@@ -9,14 +9,16 @@ import axios from 'axios';
 
 const Header = (props) => {
     let navigate = useNavigate();
-    let firstName = '', lastName = '', profilePic = '';
+    let firstName = '', lastName = '', profilePic = '', reqLen;
+    
     if(props.auth != null || props.auth){
         firstName = props.auth.firstName;
         lastName = props.auth.lastName;
         profilePic = props.auth.profilePic;
+        reqLen = props.auth.friendReqIds.length;
     }
     const showRequests = () => {
-        navigate("/requests");
+        navigate('/requests');
     }
 
     const visitFeed = () => {
@@ -41,11 +43,17 @@ const Header = (props) => {
             <img src={ profilePic } alt="profile-pic" onClick={ visitProfile }/>
             <span onClick={ visitProfile }>{ firstName } { lastName }</span>
             <FontAwesomeIcon icon={faCommentDots} className={classes.icons} />
-            <FontAwesomeIcon 
-                icon={ faUserFriends } 
-                onClick = { showRequests }
-            />
-            <button onClick={ logoutHandler }>Logout</button>
+            <div className={ classes.req }>
+                <div className={ classes.reqIcon }>
+                    <FontAwesomeIcon 
+                        icon={ faUserFriends } 
+                        onClick = { showRequests }
+                    />
+                    <div className={ classes.reqCount }>{ reqLen }</div>
+                </div>
+            </div>
+            
+            <button onClick={ logoutHandler } className={classes.logout}>Logout</button>
         </nav>
     </div>
 }

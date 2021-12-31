@@ -35,3 +35,33 @@ nav span {
 .icons {
     margin-right: 10px;
 }
+
+.req {
+    display: flex;
+    flex-direction: column;
+}
+
+.reqIcon {
+    display: flex;
+}
+
+.reqCount {
+    background-color: tomato;
+    padding: 2px 4px;
+    border-radius: 50%;
+    font-size: 11px;
+    text-align: center;
+    position: relative;
+    top: -10px;
+    left: -2px;
+}
+
+.request {
+    position: absolute;
+    transform: translate(-13rem, 2.2rem);
+}
+
+.logout {
+    margin-left: 10px;
+    padding: 7px 10px;
+}
