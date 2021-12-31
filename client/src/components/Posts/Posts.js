@@ -2,6 +2,8 @@ import { faCommentDots, faEllipsisH, faThumbsDown, faThumbsUp } from "@fortaweso
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { connect } from 'react-redux';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 import * as actions from '../../redux/actions';
 import Comments from "./Comments/Comments";
 import classes from './Posts.module.css';
@@ -13,6 +15,7 @@ const Posts = (props) => {
     const [ showCmts, setShowCmts ] = useState(false);
     const [ style, setStyle] = useState({display: 'none'});
     const [ isClicked, setIsClicked ] = useState(false);
+    const [ isLoading, setIsLoading ] = useState(false);
     const delPermission = props.delPermission;
 
     const { posted, auth } = props;
@@ -114,7 +117,7 @@ const Posts = (props) => {
     const showOpts = () => {
         if(!isClicked) {
             //show divs
-            setStyle({ display: 'block' });
+            setStyle({ display: 'block', backgroundColor: '#e6e2e1', color: '#545350', fontSize: '0.9rem' });
             setIsClicked(true);
         } else {
             //hide div
@@ -135,9 +138,11 @@ const Posts = (props) => {
     }
 
     const keepPost = () => {
+        setIsLoading(true);
         props.updatePost(posted._id, { 
             isReported: false
         });
+        setIsLoading(false);
     }
 
     return <div className = { classes.postContainer } >
@@ -169,11 +174,13 @@ const Posts = (props) => {
         { posted.images 
             && 
             <div className={ classes.postImg }>
+            <Carousel>
                 {/* <img src = { post.images[0] } alt = 'posted pics' /> */}
-                {
+                {!isLoading &&
                     posted.images.map(item => <img src = { item } alt = 'posted pics' />)
                 }
-            </div> 
+            </Carousel>
+            </div>
         }
         <div className={ classes.counts }>
             <div>
