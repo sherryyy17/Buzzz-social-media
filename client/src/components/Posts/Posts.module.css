@@ -40,16 +40,6 @@ h4 {
     padding-bottom: 10px;
 }
 
-.postImg ul {
-    display: none;
-}
-.postImg img {
-    width: 100%;
-    height: 40vh;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
 .options {
     display: flex;
     flex-direction: column;

@@ -14,7 +14,7 @@ const EditProfile = (props) => {
     const [cover, setCover] = useState(null);
     const [city, setCity] = useState(null);
     const [country, setCountry] = useState(null);
-    const [website, setWebsite] = useState("http");
+    const [website, setWebsite] = useState("");
     const [desg, setDesg] = useState(null);
     const [ iconClicked, setIconClicked ] = useState(false);
     const [ imgSelected, setImgSelected ] = useState("");
@@ -31,6 +31,7 @@ const EditProfile = (props) => {
             setCountry(props.auth.address.country);
             setCity(props.auth.address.city);
             setDesg(props.auth.description);
+            setWebsite(props.auth.website);
         }
     },[]);
 
@@ -44,7 +45,8 @@ const EditProfile = (props) => {
                 city: city,
                 country: country
             },
-            description: desg
+            description: desg,
+            website: website
         })
         history("/profile")
     }

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { connect } from 'react-redux';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import { Image } from 'cloudinary-react';
 import * as actions from '../../redux/actions';
 import Comments from "./Comments/Comments";
 import classes from './Posts.module.css';
@@ -20,7 +21,7 @@ const Posts = (props) => {
 
     const { posted, auth } = props;
 
-    const date = posted.createdAt;
+    const date = new Date(posted.createdAt).toLocaleString();
     let commLen = 0, profilePic = '';
     if(posted.comments) {
         commLen = posted.comments.length;
@@ -177,7 +178,7 @@ const Posts = (props) => {
             <Carousel>
                 {/* <img src = { post.images[0] } alt = 'posted pics' /> */}
                 {!isLoading &&
-                    posted.images.map(item => <img src = { item } alt = 'posted pics' />)
+                    posted.images.map(item => <Image publicId = { item } cloudName="drmk1r3uw" style={{ height: '20rem' }} />)
                 }
             </Carousel>
             </div>

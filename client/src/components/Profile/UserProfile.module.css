@@ -98,7 +98,14 @@
 }
 
 .website {
+    display: flex;
+    align-items: center;
     color: #3292c9;
     background: none;
     border: 1px solid #3292c9;
+}
+
+.website a {
+    text-decoration: none;
+    color: #3292c9;
 }

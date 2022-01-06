@@ -6,7 +6,6 @@ import Profile from "./components/Profile/Profile";
 import * as actions from './redux/actions';
 import Suggestions from "./components/Suggestions/Suggestions";
 import Friends from "./components/Friends/Friends";
-import PostList from "./components/Posts/PostList";
 import FriendsProfile from "./components/Profile/FriendsProfile";
 import EditProfile from "./components/Profile/EditProfile/EditProfile";
 import Requests from "./components/Friends/Requests/Requests";
@@ -15,11 +14,11 @@ import Feed from "./components/Feed/Feed";
 
 function App(props) {
 
-  useEffect( () => {
+  useEffect(() => {
     props.fetchUser();
     props.fetchSuggestedUsers();
     props.fetchPost();
-  },[]);
+  },[props]);
 
   return (
     <BrowserRouter>
