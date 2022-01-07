@@ -7,8 +7,8 @@ export default function(state = [], action) {
         }
         case SAVE_POST :
             return [
-                ...state,
-                action.payload
+                action.payload?.newPost,
+                ...state
             ]
         case UPDATE_POST: {
             state.map((item, index) => {
