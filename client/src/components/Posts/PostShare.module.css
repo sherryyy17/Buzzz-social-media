@@ -1,16 +1,17 @@
 .postContainer {
     display: flex;
+    flex-direction: column;
     padding: 5px 1rem;
     margin-top: 1rem;
     margin-left: 2rem;
     margin-right: 2rem;
     border-radius: 5px;
-    justify-content: space-between;
-    align-items: center;
     background-color: white;
 }
-
-.postContainer img {
+.share {
+    display: flex;
+}
+.displayPic {
     height: 35px;
     width: 35px;
     border-radius: 50%;
@@ -50,6 +51,11 @@
 
 .imageUpload input {
     display: none;
+}
+
+#preview {
+    width: 100%;
+    height: 50vh;
 }
 
 .postContainer button {
