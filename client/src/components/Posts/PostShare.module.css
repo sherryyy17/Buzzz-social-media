@@ -8,9 +8,12 @@
     border-radius: 5px;
     background-color: white;
 }
+
 .share {
     display: flex;
+    align-items: center;
 }
+
 .displayPic {
     height: 35px;
     width: 35px;
@@ -22,6 +25,7 @@
 .textContainer {
     width: 80%;
 }
+
 .textPost {
     width: 100%;
     padding: 0.7rem 1rem ;
@@ -36,6 +40,13 @@
     align-items: center;
 }
 
+.upload { 
+    font-size: 0.95rem;
+    padding-left: 15px;
+    color: #2691bf;
+    font-weight: 500;
+}
+
 .imageUpload {
     display: flex;
     align-items: center;
@@ -45,8 +56,12 @@
 
 .icon {
     font-size: 1.5rem;
-    margin-right: 10px;
+    margin-right: 9px;
     color: #46b048;
+}
+
+.imageUpload label {
+    cursor: pointer;
 }
 
 .imageUpload input {

@@ -38,6 +38,7 @@ const PostShare = (props) => {
             postedBy: props.auth
         });
         textPost.current.value = "";
+        setImgSelected([]);
     }
 
     const newImgArrayHandler = (imgArr) => {
@@ -67,20 +68,22 @@ const PostShare = (props) => {
                     <FontAwesomeIcon icon = { faImages } className={ classes.icon } />
                 </label>
                 <input id="file-input" type="file" onChange={ handleFileAdd } />
-                <p>Photo/Video</p>
+                <label htmlFor="file-input">Photo/Video</label>
             </div>
-            { !loading && <button type='submit' onClick={ savePost } >Post</button> }        
+            { !loading ? <button type='submit' onClick={ savePost } >Post</button> : <p className={ classes.upload }>Uploading...</p> }        
+        </div>
+        <div style={{ padding: "0 18px" }}>
+            { imgSelected.length ? <h4 style={{ paddingTop: "10px" }}>Preview Image(s)</h4> : null }
+            { imgSelected.length ? 
+                imgSelected.map((image,index) => 
+                    <PreviewImg 
+                        image = { image } 
+                        imageArr = { imgSelected } 
+                        index = { index }
+                        alterImgArray = { newImgArrayHandler }     
+                    />)
+            : null}
         </div>  
-        { imgSelected.length ? <h4>Preview Image(s)</h4> : null }    
-        { imgSelected.length ? 
-            imgSelected.map((image,index) => 
-                <PreviewImg 
-                    image = { image } 
-                    imageArr = { imgSelected } 
-                    index = { index }
-                    alterImgArray = { newImgArrayHandler }     
-                />)
-        : null}
     </div>
 }
 

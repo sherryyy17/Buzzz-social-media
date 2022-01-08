@@ -175,12 +175,15 @@ const Posts = (props) => {
         { posted.images 
             && 
             <div className={ classes.postImg }>
+            { posted.images.length === 1 
+            ? <img src = { posted.images[0] } alt = 'posted pics' />
+            :
             <Carousel>
-                {/* <img src = { post.images[0] } alt = 'posted pics' /> */}
                 {!isLoading &&
                     posted.images.map(item => <Image publicId = { item } cloudName="drmk1r3uw" style={{ height: '20rem' }} />)
                 }
             </Carousel>
+            }
             </div>
         }
         <div className={ classes.counts }>
