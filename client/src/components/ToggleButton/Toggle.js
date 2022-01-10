@@ -19,12 +19,6 @@ const Toggle = (props) => {
             </div>
             <span>Admin</span>
         </div>
-    // return<div 
-    //         className={ classes.toggleBtn }
-    //         onClick={ () => setIsActive(!isActive) }
-    //     >
-    //         <div className={ classes.circle }></div>
-    //     </div>
 }
 
 export default Toggle;
